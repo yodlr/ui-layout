@@ -535,7 +535,7 @@ angular.module('ui.layout', [])
     return ctrl;
   }])
 
-  .directive('uiLayout', ['$window', function($window) {
+  .directive('uiLayout', ['$window','$timeout', function($window,$timeout) {
     return {
       restrict: 'AE',
       controller: 'uiLayoutCtrl',
@@ -545,7 +545,7 @@ angular.module('ui.layout', [])
         });
 
         function onResize() {
-          scope.$apply(function() {
+          $timeout(function() { 
             ctrl.updateDisplay();
           });
         }
